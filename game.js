@@ -16,10 +16,10 @@ const table = { x: 405, y: 262, w: 150, h: 92 };
 const letterSpot = { x: 445, y: 292, kind: "letter" };
 const albumSpot = { x: 516, y: 295, kind: "album" };
 const albumImages = [
-  "assets/album/memory-1.png",
-  "assets/album/memory-2.png",
-  "assets/album/memory-3.png",
-  "assets/album/memory-4.png",
+  "/assets/album/memory-1.png",
+  "/assets/album/memory-2.png",
+  "/assets/album/memory-3.png",
+  "/assets/album/memory-4.png",
 ];
 let extraElements = [];
 
@@ -37,6 +37,7 @@ const albumImage = document.querySelector("#albumImage");
 const albumCaption = document.querySelector("#albumCaption");
 const editorStatus = document.querySelector("#editorStatus");
 let adminPassword = "";
+let albumLoadFailed = false;
 
 const obstacles = [
   { x: 65, y: 74, w: 130, h: 85 },
@@ -548,8 +549,17 @@ function openAlbum() {
   openModal("album");
 }
 
+function normalizeImagePath(path) {
+  if (/^(https?:|data:|\/)/i.test(path)) return path;
+  return `/${path}`;
+}
+
 function updateAlbum() {
-  albumImage.src = albumImages[activePhoto];
+  albumLoadFailed = false;
+  const imagePath = albumImages[activePhoto];
+  albumImage.alt = `相册第 ${activePhoto + 1} 张照片`;
+  albumImage.removeAttribute("src");
+  albumImage.src = normalizeImagePath(imagePath);
   albumCaption.textContent = `第 ${activePhoto + 1} 页 / 共 ${albumImages.length} 页`;
 }
 
@@ -724,6 +734,16 @@ document.querySelectorAll("[data-close]").forEach((button) => {
 
 document.querySelector("#openLetter").addEventListener("click", () => openModal("letter"));
 document.querySelector("#openAlbum").addEventListener("click", openAlbum);
+albumImage.addEventListener("load", () => {
+  if (!albumLoadFailed) {
+    albumCaption.textContent = `第 ${activePhoto + 1} 页 / 共 ${albumImages.length} 页`;
+  }
+});
+albumImage.addEventListener("error", () => {
+  albumLoadFailed = true;
+  albumImage.removeAttribute("src");
+  albumCaption.textContent = `图片加载失败：${albumImages[activePhoto]}`;
+});
 document.querySelector("#albumUploadInput").addEventListener("change", () => {
   uploadSelectedImages().catch((error) => {
     editorStatus.textContent = error.message;

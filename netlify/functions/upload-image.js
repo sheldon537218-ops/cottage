@@ -25,7 +25,7 @@ exports.handler = async (event) => {
       metadata: { contentType: `image/${ext === "jpg" ? "jpeg" : ext}` },
     });
 
-    return response(200, { ok: true, path: `uploads/${filename}` });
+    return response(200, { ok: true, path: `/uploads/${filename}` });
   } catch (error) {
     return response(400, { ok: false, error: error.message });
   }

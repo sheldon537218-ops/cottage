@@ -108,7 +108,7 @@ async function handleApi(req, res, url) {
       const filename = `${base}-${Date.now()}.${ext}`;
       fs.mkdirSync(uploadDir, { recursive: true });
       fs.writeFileSync(path.join(uploadDir, filename), Buffer.from(match[2], "base64"));
-      return send(res, 200, JSON.stringify({ ok: true, path: `uploads/${filename}` }), mimeTypes[".json"]);
+      return send(res, 200, JSON.stringify({ ok: true, path: `/uploads/${filename}` }), mimeTypes[".json"]);
     } catch (error) {
       return send(res, 400, JSON.stringify({ ok: false, error: error.message }), mimeTypes[".json"]);
     }
