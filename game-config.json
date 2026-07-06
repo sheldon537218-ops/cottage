@@ -1,0 +1,89 @@
+{
+  "letter": {
+    "title": "???????",
+    "body": "??,????????????,?????????????,??????????,?????????????????,??????????,?????????????????????????,?????????????????,??????????,?????,??????????????????????????,????????????,??,???????????"
+  },
+  "album": {
+    "title": "????????",
+    "images": [
+      "assets/album/memory-1.png",
+      "assets/album/memory-2.png",
+      "assets/album/memory-3.png",
+      "assets/album/memory-4.png"
+    ]
+  },
+  "room": {
+    "extraElements": [
+      {
+        "type": "plant",
+        "x": 250,
+        "y": 92,
+        "w": 78,
+        "h": 96,
+        "fill": "#76c982",
+        "stroke": "#438a53",
+        "solid": false
+      },
+      {
+        "type": "lamp",
+        "x": 640,
+        "y": 88,
+        "w": 70,
+        "h": 118,
+        "fill": "#ffd86d",
+        "stroke": "#bb8740",
+        "solid": false
+      },
+      {
+        "type": "heartGarland",
+        "x": 374,
+        "y": 96,
+        "w": 220,
+        "h": 42,
+        "fill": "#ff6f91",
+        "stroke": "#b73f5a",
+        "solid": false
+      },
+      {
+        "type": "heart",
+        "x": 312,
+        "y": 180,
+        "w": 42,
+        "h": 38,
+        "fill": "#ff5d86",
+        "stroke": "#b73f5a",
+        "solid": false
+      },
+      {
+        "type": "heart",
+        "x": 596,
+        "y": 190,
+        "w": 34,
+        "h": 30,
+        "fill": "#ff8cab",
+        "stroke": "#c94a70",
+        "solid": false
+      },
+      {
+        "type": "flowerVase",
+        "x": 320,
+        "y": 392,
+        "w": 72,
+        "h": 82,
+        "fill": "#ff7da0",
+        "stroke": "#7da85a",
+        "solid": false
+      },
+      {
+        "type": "flowerVase",
+        "x": 570,
+        "y": 380,
+        "w": 72,
+        "h": 82,
+        "fill": "#ffd15d",
+        "stroke": "#7da85a",
+        "solid": false
+      }
+    ]
+  }
+}

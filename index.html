@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tc和yp的小屋</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="game-panel" aria-label="互动小游戏">
+        <canvas id="game" width="960" height="620"></canvas>
+        <div class="hud">
+          <span>WASD 移动</span>
+          <span>靠近桌子按 Space</span>
+        </div>
+      </section>
+    </main>
+
+    <div id="choiceModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="choiceTitle">
+      <div class="choice-card">
+        <button class="close-button" data-close aria-label="关闭">×</button>
+        <h1 id="choiceTitle">桌上的小秘密</h1>
+        <div class="choice-actions">
+          <button id="openLetter" class="choice-button">
+            <span class="choice-icon">✉</span>
+            <span>读信</span>
+          </button>
+          <button id="openAlbum" class="choice-button">
+            <span class="choice-icon">▣</span>
+            <span>看相册</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div id="letterModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+      <article class="letter-card">
+        <button class="close-button" data-close aria-label="关闭">×</button>
+        <div class="stamp">❤</div>
+        <h1 id="letterTitle">给宝宝的一封信</h1>
+        <p id="letterBody">
+          宝宝，我知道你对我真的很好很好，包括你跟我说的和没跟我说的，所以我真的很爱很爱你，虽然有些你对我的好我可能不一定知道，但有些没说的我也知道，你在方方面面感情上陪伴上处处细腻无微不至地照顾着我，我第一次感受到爱的人对我这么这么好，也感受到真心炙热的爱，我爱你宝宝，有时候有些事情我不一定能够马上理解你你要给我一点时间，希望我们能够永远陪伴对方。
+        </p>
+      </article>
+    </div>
+
+    <div id="albumModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="albumTitle">
+      <section class="album-card">
+        <button class="close-button" data-close aria-label="关闭">×</button>
+        <h1 id="albumTitle">我们的多巴胺相册</h1>
+        <div class="album-book">
+          <button id="prevPhoto" class="page-button" aria-label="上一张">‹</button>
+          <figure>
+            <img id="albumImage" src="assets/album/memory-1.png" alt="动漫多巴胺风格回忆照片" />
+            <figcaption id="albumCaption">第 1 页 / 共 4 页</figcaption>
+          </figure>
+          <button id="nextPhoto" class="page-button" aria-label="下一张">›</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="editorModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="editorTitle">
+      <section class="editor-card">
+        <button class="close-button" data-close aria-label="关闭">×</button>
+        <h1 id="editorTitle">内容管理</h1>
+        <div class="editor-grid">
+          <label>信件标题<input id="letterTitleInput" type="text" /></label>
+          <label class="wide">信件内容<textarea id="letterBodyInput" rows="7"></textarea></label>
+          <label>相册标题<input id="albumTitleInput" type="text" /></label>
+          <label class="wide">相册图片路径（一行一张）<textarea id="albumImagesInput" rows="5"></textarea></label>
+          <label class="wide">上传并加入相册<input id="albumUploadInput" type="file" accept="image/png,image/jpeg,image/webp" multiple /></label>
+          <label class="wide">额外屋内元素 JSON（可增加家具、装饰、障碍物）<textarea id="roomElementsInput" rows="8"></textarea></label>
+        </div>
+        <div class="editor-actions">
+          <button id="saveConfig" class="primary-button" type="button">保存并刷新游戏</button>
+          <button id="resetEditor" type="button">恢复当前配置</button>
+          <span id="editorStatus" role="status"></span>
+        </div>
+      </section>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>
